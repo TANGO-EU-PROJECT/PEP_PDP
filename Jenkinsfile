@@ -5,8 +5,7 @@ pipeline {
         }
     }
 	tools {
-          maven 'Maven-v.3.6.3'
-          jdk 'jdk11.0'
+          jdk 'jdk17.0'
     }
     environment {
         DOCKER_IMAGE = 'server' 
