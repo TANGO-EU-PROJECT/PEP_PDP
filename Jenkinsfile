@@ -1,7 +1,9 @@
 pipeline {
-     node {
+     agent {
+        node {
             label 'Agent01'
         }
+    }
     environment {
         JAVA_HOME = '/usr/lib/jvm/java-1.17.0-openjdk-amd64'
         DOCKER_IMAGE = 'server' 
