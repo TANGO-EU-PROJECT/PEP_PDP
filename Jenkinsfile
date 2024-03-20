@@ -4,7 +4,10 @@ pipeline {
             label 'Agent01'
         }
     }
-	
+
+	  tools {
+          jdk 'jdk11.0'
+    }
     environment {
         DOCKER_IMAGE = 'server' 
     }
