@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
+        JAVA_HOME = '/usr/lib/jvm/java-1.17.0-openjdk-amd64'
         DOCKER_IMAGE = 'server' 
     }
    stages {
