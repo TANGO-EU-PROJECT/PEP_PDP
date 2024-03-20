@@ -6,8 +6,10 @@ pipeline {
    stages {
         stage('Compilar') {
             steps {
-                sh './gradlew build'
-                sh './gradlew test' 
+                dir('demo') {
+                    sh './gradlew build'
+                    sh './gradlew test' 
+                }
             }
         }
    }
