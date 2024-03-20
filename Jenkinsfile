@@ -12,6 +12,7 @@ pipeline {
         stage('Compilar') {
             steps {
                 dir('demo') {
+		    sh './gradlew build'
                     sh 'docker build -t server .'
 		    sh 'docker run -e PDP_CONFIG=test -p 8088:8080 server'
                 }
