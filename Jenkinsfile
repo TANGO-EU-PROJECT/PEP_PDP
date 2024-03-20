@@ -4,15 +4,19 @@ pipeline {
             label 'Agent01'
         }
     }
+	tools {
+          maven 'Maven-v.3.6.3'
+          jdk 'jdk11.0'
+    }
     environment {
-        JAVA_HOME = '/usr/lib/jvm/java-1.17.0-openjdk-amd64'
         DOCKER_IMAGE = 'server' 
     }
    stages {
         stage('Compilar') {
             steps {
                 dir('demo') {
-		    sh './gradlew build'
+		    sh 'java -version'
+		    sh 'echo "JAVA_HOME=$JAVA_HOME"'
                     sh 'docker build -t server .'
 		    sh 'docker run -e PDP_CONFIG=test -p 8088:8080 server'
                 }
