@@ -19,8 +19,7 @@ pipeline {
 		    sh 'echo "JAVA_HOME=$JAVA_HOME"'
 			echo 'build gradle'
 		    sh './gradlew build'
-                    sh 'docker build -t server .'
-		    sh 'docker run -e PDP_CONFIG=test -p 8088:8080 server'
+                   sh './gradlew test'
                 }
             }
         }
