@@ -20,6 +20,8 @@ pipeline {
 			echo 'build gradle'
 		    sh './gradlew build'
                    sh './gradlew test'
+			 sh 'docker build -t server .'
+		    sh 'docker run -e PDP_CONFIG=test -p 8088:8080 server'
                 }
             }
         }
