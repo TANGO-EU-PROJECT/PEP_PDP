@@ -6,7 +6,7 @@ pipeline {
     }
 
 	  tools {
-          jdk 'jdk11.0'
+          jdk 'jdk17.0'
     }
     environment {
         DOCKER_IMAGE = 'server' 
