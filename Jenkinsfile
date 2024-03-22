@@ -47,8 +47,10 @@ pipeline {
             }
         }
 	   stage("Run server"){
+		    steps {
 		    sh 'docker build -t server .'
 		    sh 'docker run -e PDP_CONFIG=test -p 8088:8080 server'
+		    }
 	   }
    }
 }
