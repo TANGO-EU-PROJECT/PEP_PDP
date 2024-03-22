@@ -48,6 +48,12 @@ pipeline {
                 }
             }
         }
+	         stage('Docker Remove Image locally') {
+        steps {
+                sh 'docker rmi "$ARTIFACTORY_DOCKER_REGISTRY$DOCKER_IMAGE_TAG"'
+		sh 'docker rmi "$ARTIFACTORY_DOCKER_REGISTRY$APP_NAME:latest_dev"'
+            }
+        }
 	   stage("Run server"){
 		    steps {
 			     dir('demo') {
