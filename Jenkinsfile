@@ -9,6 +9,7 @@ pipeline {
           jdk 'jdk17.0'
     }
     environment {
+	     APP_NAME = "test_module_rest"
         DOCKER_IMAGE = 'server' 
 	ARTIFACTORY_SERVER = "harbor.tango.rid-intrasoft.eu"
       ARTIFACTORY_DOCKER_REGISTRY = "harbor.tango.rid-intrasoft.eu/tango/"
