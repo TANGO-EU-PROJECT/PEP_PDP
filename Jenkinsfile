@@ -9,10 +9,10 @@ pipeline {
           jdk 'jdk17.0'
     }
     environment {
-	     APP_NAME = "test_module_rest"
+	     APP_NAME = "pdp-pep"
         DOCKER_IMAGE = 'server' 
 	ARTIFACTORY_SERVER = "harbor.tango.rid-intrasoft.eu"
-      ARTIFACTORY_DOCKER_REGISTRY = "harbor.tango.rid-intrasoft.eu/tango/"
+      ARTIFACTORY_DOCKER_REGISTRY = "harbor.tango.rid-intrasoft.eu/"
       BRANCH_NAME = "main"
       DOCKER_IMAGE_TAG = "$APP_NAME:R${env.BUILD_ID}"
     }
