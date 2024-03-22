@@ -16,16 +16,13 @@ pipeline {
       DOCKER_IMAGE_TAG = "$APP_NAME:R${env.BUILD_ID}"
     }
    stages {
-        stage('Compilar') {
+        stage('Compile') {
             steps {
                 dir('demo') {
 		    sh 'java -version'
 		    sh 'echo "JAVA_HOME=$JAVA_HOME"'
-			echo 'build gradle'
 		    sh './gradlew build'
                    sh './gradlew test'
-			 sh 'docker build -t server .'
-		    sh 'docker run -e PDP_CONFIG=test -p 8088:8080 server'
                 }
             }
         }
@@ -49,5 +46,9 @@ pipeline {
                 }
             }
         }
+	   stage("Run server"){
+		    sh 'docker build -t server .'
+		    sh 'docker run -e PDP_CONFIG=test -p 8088:8080 server'
+	   }
    }
 }
