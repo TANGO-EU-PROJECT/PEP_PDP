@@ -22,17 +22,18 @@ pipeline {
 		    sh 'java -version'
 		    sh 'echo "JAVA_HOME=$JAVA_HOME"'
 		    sh './gradlew build'
-                   sh './gradlew test'
                 }
             }
         }
 	        stage('Build image') { // build and tag docker image
             steps {
+		       dir('demo') {
                 echo 'Starting to build docker image'
                 script {
                     def dockerImage = docker.build(ARTIFACTORY_DOCKER_REGISTRY + DOCKER_IMAGE_TAG) 
                 }
             }
+	    }
         }
 
 	stage("Push_Image"){
