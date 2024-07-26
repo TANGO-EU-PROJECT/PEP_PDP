@@ -18,9 +18,9 @@ pipeline {
 	TAG = 'latest_dev'    
 	KUBERNETES_NAMESPACE = 'ips-testing1'
       HARBOR_SECRET = 'harborsecret'
-	 CHART_NAME = 'myapp'    
+	 CHART_NAME = 'peppdp-updated'    
 	    CHART_PATH = 'Chart.yaml'
-	    RELEASE_NAME = 'peppdp'
+	    RELEASE_NAME = 'peppdp-service-updated'
     }
    stages {
         stage('Compile') {
