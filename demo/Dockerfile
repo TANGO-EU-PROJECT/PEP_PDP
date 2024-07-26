@@ -4,6 +4,7 @@ FROM gradle:jdk17 AS builder
 # Copy app files and Gradle dependencies
 COPY --chown=gradle:gradle . /home/gradle/project
 WORKDIR /home/gradle/project
+RUN ./gradlew clean
 RUN ./gradlew build --exclude-task test
 
 # Stage 2: Prepare the container
