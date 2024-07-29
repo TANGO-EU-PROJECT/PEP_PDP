@@ -17,7 +17,7 @@ pipeline {
       DOCKER_IMAGE_TAG = "$APP_NAME:R${env.BUILD_ID}"
 	TAG = 'latest'    
 	KUBERNETES_NAMESPACE = 'ips-testing1'
-      HARBOR_SECRET = 'harborsecret2'
+      HARBOR_SECRET = 'harborsecrets'
 	 CHART_NAME = 'peppdp-updated'    
 	    CHART_PATH = 'Chart.yaml'
 	    RELEASE_NAME = 'peppdp-service-updated'
