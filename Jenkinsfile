@@ -15,7 +15,7 @@ pipeline {
       ARTIFACTORY_DOCKER_REGISTRY = "harbor.tango.rid-intrasoft.eu/pdp-pep/"
       BRANCH_NAME = "main"
       DOCKER_IMAGE_TAG = "$APP_NAME:R${env.BUILD_ID}"
-	TAG = 'latest_dev'    
+	TAG = 'latest'    
 	KUBERNETES_NAMESPACE = 'ips-testing1'
       HARBOR_SECRET = 'harborsecret2'
 	 CHART_NAME = 'peppdp-updated'    
@@ -50,15 +50,15 @@ pipeline {
                     echo "***** Push Docker Image *****"
                     sh 'docker login ${ARTIFACTORY_SERVER} -u ${USERNAME} -p ${PASSWORD}'
                     sh 'docker image push ${ARTIFACTORY_DOCKER_REGISTRY}${DOCKER_IMAGE_TAG}'
-		    sh 'docker tag ${ARTIFACTORY_DOCKER_REGISTRY}${DOCKER_IMAGE_TAG} ${ARTIFACTORY_DOCKER_REGISTRY}${APP_NAME}:latest_dev'
-		    sh 'docker image push ${ARTIFACTORY_DOCKER_REGISTRY}${APP_NAME}:latest_dev'
+		    sh 'docker tag ${ARTIFACTORY_DOCKER_REGISTRY}${DOCKER_IMAGE_TAG} ${ARTIFACTORY_DOCKER_REGISTRY}${APP_NAME}:latest'
+		    sh 'docker image push ${ARTIFACTORY_DOCKER_REGISTRY}${APP_NAME}:latest'
                 }
             }
         }
 	         stage('Docker Remove Image locally') {
         steps {
                 sh 'docker rmi "$ARTIFACTORY_DOCKER_REGISTRY$DOCKER_IMAGE_TAG"'
-		sh 'docker rmi "$ARTIFACTORY_DOCKER_REGISTRY$APP_NAME:latest_dev"'
+		sh 'docker rmi "$ARTIFACTORY_DOCKER_REGISTRY$APP_NAME:latest"'
             }
         }
 	
